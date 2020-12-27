@@ -46,17 +46,29 @@
         Dim solidBrushGray As SolidBrush = New SolidBrush(Color.LightGray)
         Dim rects(8, 8) As Rectangle
         'new image stuff
-        Dim myBitmap(1, 12) As System.Drawing.Bitmap
+        Dim myBitmap(12) As System.Drawing.Bitmap
+        myBitmap(1) = New System.Drawing.Bitmap(My.Resources._1)
+        myBitmap(2) = New System.Drawing.Bitmap(My.Resources._2)
+        myBitmap(3) = New System.Drawing.Bitmap(My.Resources._3)
+        myBitmap(4) = New System.Drawing.Bitmap(My.Resources._4)
+        myBitmap(5) = New System.Drawing.Bitmap(My.Resources._5)
+        myBitmap(6) = New System.Drawing.Bitmap(My.Resources._6)
+        myBitmap(7) = New System.Drawing.Bitmap(My.Resources._7)
+        myBitmap(8) = New System.Drawing.Bitmap(My.Resources._8)
+        myBitmap(9) = New System.Drawing.Bitmap(My.Resources._9)
+        myBitmap(10) = New System.Drawing.Bitmap(My.Resources._10)
+        myBitmap(11) = New System.Drawing.Bitmap(My.Resources._11)
+        myBitmap(12) = New System.Drawing.Bitmap(My.Resources._12)
+
         Dim myGraphics As Graphics
 
 
         Dim funnyModCheck
         For fillerx = 1 To 8
             For fillery = 1 To 8
-                rects(fillerx, fillery) = New Rectangle((fillerx * 64) - 64, (fillery * 64) - 64, 64, 64)
+                rects(fillerx, fillery) = New Rectangle((fillerx * 64) - 64, (fillery * -64) + 512, 64, 64)
 
                 funnyModCheck = (fillerx + fillery) Mod 2
-
 
 
                 If funnyModCheck = 0 Then
@@ -67,40 +79,13 @@
                 End If
 
 
-                '           'EEK! I wish I knew of a better way than all of these ugly if statements!
-                '           If boardSquare(fillerx, fillery) = 1 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._1)
-                '           ElseIf boardSquare(fillerx, fillery) = 2 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._2)
-                '           ElseIf boardSquare(fillerx, fillery) = 3 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._3)
-                '           ElseIf boardSquare(fillerx, fillery) = 4 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._4)
-                '           ElseIf boardSquare(fillerx, fillery) = 5 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._5)
-                '           ElseIf boardSquare(fillerx, fillery) = 6 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._6)
-                '           ElseIf boardSquare(fillerx, fillery) = 7 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._7)
-                '           ElseIf boardSquare(fillerx, fillery) = 8 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._8)
-                '           ElseIf boardSquare(fillerx, fillery) = 9 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._9)
-                '           ElseIf boardSquare(fillerx, fillery) = 10 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._10)
-                '           ElseIf boardSquare(fillerx, fillery) = 11 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._11)
-                '           ElseIf boardSquare(fillerx, fillery) = 12 Then
-                '           Dim myBitmap As Bitmap = New System.Drawing.Bitmap(My.Resources._12)
-                '
-                '                End If
-                '
-
-
-
-                'renders out the actual image you just defined
                 myGraphics = Graphics.FromHwnd(ActiveForm().Handle)
-                myGraphics.DrawImage(image:=myBitmap(1, 1), rect:=rects(1, 1))
+
+                If boardSquare(fillerx, fillery) > 0 Then
+
+                    myGraphics.DrawImage(image:=myBitmap(boardSquare(fillerx, fillery)), rect:=rects(fillerx, fillery))
+                End If
+
 
             Next 'these close the funny 2D loop thing
         Next
@@ -119,6 +104,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        setBoard()
         renderer()
     End Sub
 End Class
