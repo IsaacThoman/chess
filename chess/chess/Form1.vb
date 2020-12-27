@@ -2,6 +2,10 @@
 
     Public boardSquare(8, 8) As Integer
 
+    ' 1, 2 is from position, 3, 4 is to position in x,y format
+    Public selections(4) As Integer
+
+
     Function setBoard()
         'white rooks
         boardSquare(1, 1) = 4
@@ -44,6 +48,7 @@
         Dim Brush1 As Brush
         Dim solidBrushGreen As SolidBrush = New SolidBrush(Color.DarkGreen)
         Dim solidBrushGray As SolidBrush = New SolidBrush(Color.LightGray)
+        Dim solidBrushYellow As SolidBrush = New SolidBrush(Color.LightYellow)
         Dim rects(8, 8) As Rectangle
         'new image stuff
         Dim myBitmap(12) As System.Drawing.Bitmap
@@ -71,12 +76,23 @@
                 funnyModCheck = (fillerx + fillery) Mod 2
 
 
-                If funnyModCheck = 0 Then
-                    surface.FillRectangle(solidBrushGreen, rects(fillerx, fillery))
+
+                If selections(1) = fillerx And selections(2) = fillery Then
+                    surface.FillRectangle(solidBrushYellow, rects(fillerx, fillery))
+
                 Else
-                    'uses solidGrayBrush for every other square. clever, right?
-                    surface.FillRectangle(solidBrushGray, rects(fillerx, fillery))
+
+
+                    If funnyModCheck = 0 Then
+                        surface.FillRectangle(solidBrushGreen, rects(fillerx, fillery))
+                    Else
+                        'uses solidGrayBrush for every other square. clever, right?
+                        surface.FillRectangle(solidBrushGray, rects(fillerx, fillery))
+                    End If
+
+
                 End If
+
 
 
                 myGraphics = Graphics.FromHwnd(ActiveForm().Handle)
@@ -106,5 +122,20 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         setBoard()
         renderer()
+    End Sub
+
+    Private Sub ChessForm_Click(sender As Object, e As EventArgs) Handles Me.Click
+
+
+
+
+
+        selections(1) = (MousePosition.X + 32) \ 64
+        selections(2) = ((0 - MousePosition.Y) + 512) \ 64
+        Button1.Text = selections(1) & ", " & selections(2)
+
+        renderer()
+
+
     End Sub
 End Class

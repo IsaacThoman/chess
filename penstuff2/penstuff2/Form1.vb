@@ -32,8 +32,6 @@
 
 
         myBitmap = New System.Drawing.Bitmap(filename:="c:/8.png")
-
-        'return the current form as a drawing surface
         myGraphics = Graphics.FromHwnd(ActiveForm().Handle)
         myGraphics.DrawImage(image:=myBitmap, rect:=rect1)
 
