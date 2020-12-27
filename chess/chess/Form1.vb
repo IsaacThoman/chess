@@ -130,8 +130,8 @@
 
 
 
-        selections(1) = (MousePosition.X - 32) \ 64
-        selections(2) = 0 - (MousePosition.Y - 32) \ 64 + 10
+        selections(1) = (MousePosition.X - Me.Left) \ 64
+        selections(2) = 0 - (MousePosition.Y - Me.Top) \ 64 + 8
 
 
         renderer()
