@@ -130,11 +130,17 @@
 
 
 
-        selections(1) = (MousePosition.X + 32) \ 64
-        selections(2) = ((0 - MousePosition.Y) + 512) \ 64
-        Button1.Text = selections(1) & ", " & selections(2)
+        selections(1) = (MousePosition.X - 32) \ 64
+        selections(2) = 0 - (MousePosition.Y - 32) \ 64 + 10
+
 
         renderer()
+
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
+
 
 
     End Sub
