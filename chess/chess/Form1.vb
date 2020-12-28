@@ -23,13 +23,13 @@
         boardSquare(3, 1) = 2
         boardSquare(6, 1) = 2
         'black bishops
-        boardSquare(3, 8) = 9
-        boardSquare(6, 8) = 9
+        boardSquare(3, 8) = 8
+        boardSquare(6, 8) = 8
         'kings
-        boardSquare(4, 1) = 6
+        boardSquare(4, 1) = 5
         boardSquare(4, 8) = 12
         'queens
-        boardSquare(5, 1) = 5
+        boardSquare(5, 1) = 6
         boardSquare(5, 8) = 11
 
         'this should fill in pawns
@@ -176,6 +176,10 @@
             Dim sourcePiece As Integer = boardSquare(source(1), source(2))
             Dim destinationPiece As Integer = boardSquare(destination(1), destination(2))
 
+            'put the funny checks here
+
+
+
             boardSquare(source(1), source(2)) = destinationPiece
             boardSquare(destination(1), destination(2)) = sourcePiece
 
@@ -188,7 +192,7 @@
             selections(0) = 0
 
 
-            'Please burn this when you do rules tomorrow
+            'please burn this when you do rules tomorrow
 
 
 
