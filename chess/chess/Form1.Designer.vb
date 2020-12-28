@@ -27,9 +27,9 @@ Partial Class ChessForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 149)
+        Me.Button1.Location = New System.Drawing.Point(12, 119)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(38, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "reset"
         Me.Button1.UseVisualStyleBackColor = True
@@ -41,7 +41,6 @@ Partial Class ChessForm
         Me.ClientSize = New System.Drawing.Size(509, 511)
         Me.Controls.Add(Me.Button1)
         Me.Name = "ChessForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Chess"
         Me.ResumeLayout(False)
 

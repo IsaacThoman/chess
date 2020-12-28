@@ -39,6 +39,16 @@
             boardSquare(filler, 7) = 7
         Next
 
+        'clears the rest of the board
+
+        Dim clearer As Integer
+        For clearer = 1 To 8
+            boardSquare(clearer, 3) = 0
+            boardSquare(clearer, 4) = 0
+            boardSquare(clearer, 5) = 0
+            boardSquare(clearer, 6) = 0
+        Next
+
 
 
     End Function
@@ -79,6 +89,10 @@
 
                 If selections(1) = fillerx And selections(2) = fillery Then
                     surface.FillRectangle(solidBrushYellow, rects(fillerx, fillery))
+
+                    '   ElseIf selections(3) = fillerx And selections(4) = fillery Then
+                    '     surface.FillRectangle(solidBrushYellow, rects(fillerx, fillery))
+                    'commented because it doesn't do anything because it resets before re-rendering. Maybe it shouldn't do that?
 
                 Else
 
@@ -128,10 +142,55 @@
 
 
 
+        If selections(0) = 0 Then
+            selections(1) = (MousePosition.X - Me.Left - 32) / 64 + 1
+            selections(2) = 0 - (MousePosition.Y - Me.Top) / 64 + 9
+            selections(0) = 1
+
+        Else
 
 
-        selections(1) = (MousePosition.X - Me.Left - 32) / 64 + 1
-        selections(2) = 0 - (MousePosition.Y - Me.Top) / 64 + 9
+            selections(3) = (MousePosition.X - Me.Left - 32) / 64 + 1
+            selections(4) = 0 - (MousePosition.Y - Me.Top) / 64 + 9
+
+
+
+
+            ' This is a very confusing way to swap out 2 pieces
+
+
+            Dim source(2) As Integer
+            Dim destination(2) As Integer
+
+
+            source(1) = selections(1)
+            source(2) = selections(2)
+            destination(1) = selections(3)
+            destination(2) = selections(4)
+
+            Dim sourcePiece As Integer = boardSquare(source(1), source(2))
+            Dim destinationPiece As Integer = boardSquare(destination(1), destination(2))
+
+            boardSquare(source(1), source(2)) = destinationPiece
+            boardSquare(destination(1), destination(2)) = sourcePiece
+
+
+            selections(1) = 0
+            selections(2) = 0
+            selections(3) = 0
+            selections(4) = 0
+
+            selections(0) = 0
+
+
+            'Please burn this when you do rules tomorrow
+
+
+
+
+        End If
+
+
 
 
         renderer()
