@@ -29,8 +29,8 @@
         boardSquare(4, 1) = 6
         boardSquare(4, 8) = 12
         'queens
-        boardSquare(5, 1) = 6
-        boardSquare(5, 8) = 12
+        boardSquare(5, 1) = 5
+        boardSquare(5, 8) = 11
 
         'this should fill in pawns
         Dim filler As Integer
