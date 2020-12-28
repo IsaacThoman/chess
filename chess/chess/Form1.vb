@@ -49,6 +49,11 @@
             boardSquare(clearer, 6) = 0
         Next
 
+        selections(0) = 0
+        selections(1) = 0
+        selections(2) = 0
+        selections(3) = 0
+        selections(4) = 0
 
 
     End Function

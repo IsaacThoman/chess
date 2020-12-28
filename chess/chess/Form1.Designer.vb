@@ -40,6 +40,7 @@ Partial Class ChessForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(509, 511)
         Me.Controls.Add(Me.Button1)
+        Me.MaximumSize = New System.Drawing.Size(525, 550)
         Me.Name = "ChessForm"
         Me.Text = "Chess"
         Me.ResumeLayout(False)
