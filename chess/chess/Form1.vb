@@ -1,6 +1,7 @@
-Public Class ChessForm
+﻿Public Class ChessForm
 
     Public boardSquare(8, 8) As Integer
+    Public legalMoves(8, 8) As Boolean
 
     ' 1, 2 is from position, 3, 4 is to position in x,y format
     Public selections(4) As Integer
@@ -23,7 +24,7 @@ Public Class ChessForm
         boardSquare(3, 1) = 2
         boardSquare(6, 1) = 2
         'black bishops
-        boardSquare(3, 8) =
+        boardSquare(3, 8) = 8
         boardSquare(6, 8) = 8
         'kings
         boardSquare(4, 1) = 5
@@ -151,6 +152,52 @@ Public Class ChessForm
             selections(1) = (MousePosition.X - Me.Left - 32) / 64 + 1
             selections(2) = 0 - (MousePosition.Y - Me.Top) / 64 + 9
             selections(0) = 1
+
+
+
+            '  --------------------------------------- The scary stuff goes somewhere in here
+            Dim clearerx As Integer
+            Dim clearery As Integer
+            For clearerx = 1 To 8
+                For clearery = 1 To 8
+                    legalMoves(clearerx, clearery) = False
+                Next
+            Next
+
+
+
+            Dim myX As Integer = selections(1)
+            Dim myY As Integer = selections(2)
+
+            If boardSquare(myX, myY) = 0 Then
+                '                                   If selected square is empty, do nothing?
+            ElseIf boardSquare(myX, myY) = 1 Then
+                ' white pawn code
+
+
+
+                Select Case True
+                    Case boardSquare(myX, myY + 1) = 0
+                        legalMoves(myX, myY + 1) = True      'move forward one
+
+                    Case myY = 2 And boardSquare(myX, myY + 2) = 0  'move forward 2
+                        legalMoves(myX, myY + 2) = True
+
+                    Case boardSquare(myX + 1, myY + 1) > 6
+                        legalMoves(myX + 1, myY + 1) = True   ' right capture
+
+                    Case boardSquare(myX - 1, myY + 1) > 6
+                        legalMoves(myX - 1, myY + 1) = True   ' left capture
+
+                End Select
+
+
+            End If
+
+
+
+
+
 
         Else
 
