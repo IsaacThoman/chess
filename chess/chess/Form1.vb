@@ -1,7 +1,10 @@
 ﻿Public Class ChessForm
 
-    Public boardSquare(8, 8) As Integer
-    Public legalMoves(8, 8) As Boolean
+
+
+
+    Public boardSquare(9, 9) As Integer
+    Public legalMoves(9, 9) As Boolean  'This should really be 8, but I made it 9 to make the screaming stop.
 
     ' 1, 2 is from position, 3, 4 is to position in x,y format
     Public selections(4) As Integer
@@ -180,7 +183,7 @@
                     legalMoves(myX, myY + 1) = True      'move forward one
                 End If
 
-                If myY = 2 And boardSquare(myX, myY + 2) = 0 Then 'move forward 2 
+                If myY = 2 And boardSquare(myX, 2 + 2) = 0 Then 'This checks if the pawn can move forward 2, used to have myY + 2, but that creates errors when searching with the pawn at the end of the board
                     legalMoves(myX, myY + 2) = True
                 End If
 
