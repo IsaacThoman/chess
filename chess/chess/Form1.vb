@@ -1,4 +1,4 @@
-﻿Public Class ChessForm
+Public Class ChessForm
 
     Public boardSquare(8, 8) As Integer
 
@@ -23,14 +23,14 @@
         boardSquare(3, 1) = 2
         boardSquare(6, 1) = 2
         'black bishops
-        boardSquare(3, 8) = 8
+        boardSquare(3, 8) =
         boardSquare(6, 8) = 8
         'kings
         boardSquare(4, 1) = 5
-        boardSquare(4, 8) = 12
+        boardSquare(4, 8) = 11
         'queens
         boardSquare(5, 1) = 6
-        boardSquare(5, 8) = 11
+        boardSquare(5, 8) = 12
 
         'this should fill in pawns
         Dim filler As Integer
