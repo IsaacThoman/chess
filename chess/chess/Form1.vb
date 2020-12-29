@@ -233,7 +233,8 @@
             If legalMoves(destination(1), destination(2)) = True Then
 
 
-                boardSquare(source(1), source(2)) = destinationPiece
+                ' boardSquare(source(1), source(2)) = destinationPiece
+                boardSquare(source(1), source(2)) = 0
                 boardSquare(destination(1), destination(2)) = sourcePiece
 
             End If
