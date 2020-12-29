@@ -223,33 +223,40 @@
             Dim sourcePiece As Integer = boardSquare(source(1), source(2))
             Dim destinationPiece As Integer = boardSquare(destination(1), destination(2))
 
-            'put the funny checks here
+
+            If legalMoves(destination(1), destination(2)) = True Then
 
 
+                boardSquare(source(1), source(2)) = destinationPiece
+                boardSquare(destination(1), destination(2)) = sourcePiece
 
-            boardSquare(source(1), source(2)) = destinationPiece
-            boardSquare(destination(1), destination(2)) = sourcePiece
+            End If
+
 
 
             selections(1) = 0
-            selections(2) = 0
-            selections(3) = 0
-            selections(4) = 0
+                selections(2) = 0
+                selections(3) = 0
+                selections(4) = 0
 
-            selections(0) = 0
-
-
-            'please burn this when you do rules tomorrow
+                selections(0) = 0
 
 
 
 
-        End If
+
+
+                'please burn this when you do rules tomorrow
+                'forget I said that
+
+
+
+            End If
 
 
 
 
-        renderer()
+            renderer()
 
 
     End Sub
