@@ -176,20 +176,23 @@
 
 
 
-                Select Case True
-                    Case boardSquare(myX, myY + 1) = 0
-                        legalMoves(myX, myY + 1) = True      'move forward one
+                If boardSquare(myX, myY + 1) = 0 Then
+                    legalMoves(myX, myY + 1) = True      'move forward one
+                End If
 
-                    Case myY = 2 And boardSquare(myX, myY + 2) = 0  'move forward 2
-                        legalMoves(myX, myY + 2) = True
+                If myY = 2 And boardSquare(myX, myY + 2) = 0 Then 'move forward 2 
+                    legalMoves(myX, myY + 2) = True
+                End If
 
-                    Case boardSquare(myX + 1, myY + 1) > 6
-                        legalMoves(myX + 1, myY + 1) = True   ' right capture
+                If boardSquare(myX + 1, myY + 1) > 6 Then 'right capture
+                    legalMoves(myX + 1, myY + 1) = True
+                End If
 
-                    Case boardSquare(myX - 1, myY + 1) > 6
-                        legalMoves(myX - 1, myY + 1) = True   ' left capture
+                If boardSquare(myX - 1, myY + 1) > 6 Then
+                    legalMoves(myX - 1, myY + 1) = True   ' left capture
+                End If
 
-                End Select
+
 
 
             End If
@@ -199,7 +202,7 @@
 
 
 
-        Else
+            Else
 
 
             selections(3) = (MousePosition.X - Me.Left - 32) / 64 + 1
