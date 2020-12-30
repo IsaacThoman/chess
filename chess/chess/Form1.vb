@@ -41,6 +41,10 @@
         For filler = 1 To 8
             boardSquare(filler, 2) = 1
             boardSquare(filler, 7) = 7
+
+
+
+
         Next
 
         'clears the rest of the board
@@ -196,16 +200,78 @@
                 End If
 
 
-
-
-            End If
-
+                'white rook code
 
 
 
 
+            ElseIf boardSquare(myX, myY) = 4 Then
 
-            Else
+                '
+                Dim tester As Integer
+                Dim stop1 As Boolean = False
+                For tester = 1 To (8 - myY)
+
+                    If stop1 = False Then
+                        If boardSquare(myX, myY + tester) = 0 Then
+
+                            legalMoves(myX, myY + tester) = True
+
+                        ElseIf boardSquare(myX, myY + tester) > 6 Then
+                            legalMoves(myX, myY + tester) = True
+                            stop1 = True
+                        Else
+                            stop1 = True
+
+                        End If
+
+
+                    End If
+
+
+                Next
+
+
+
+
+
+                'DOWN
+
+                Dim tester2 As Integer
+                Dim stop2 As Boolean = False
+                For tester2 = 1 To (myY - 1)
+                    If stop2 = False Then
+
+                        If boardSquare(myX, myY - tester2) = 0 Then
+
+                            legalMoves(myX, myY - tester2) = True
+
+                        ElseIf boardSquare(myX, myY - tester2) > 6 Then
+                            legalMoves(myX, myY - tester2) = True
+                            stop2 = True
+                        Else
+                            stop2 = True
+
+                        End If
+
+
+
+                    End If
+
+
+                Next
+
+
+            End If ' End of rook code
+
+
+
+
+
+
+
+
+        Else '--------------------------------------      End of rules
 
 
             selections(3) = (MousePosition.X - Me.Left - 32) / 64 + 1
@@ -253,12 +319,9 @@
 
 
 
-                'please burn this when you do rules tomorrow
-                'forget I said that
 
 
-
-            End If
+        End If
 
 
 
@@ -272,5 +335,11 @@
 
 
 
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'white rooks
+        boardSquare(8, 3) = 7
+        boardSquare(8, 1) = 7
     End Sub
 End Class
