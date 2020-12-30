@@ -262,6 +262,50 @@
                 Next
 
 
+                Dim tester3 As Integer
+                stop2 = False
+                For tester3 = 1 To (8 - myX)
+                    If stop2 = False Then
+
+
+                        If boardSquare(myX + tester3, myY) = 0 Then
+                            legalMoves(myX + tester3, myY) = True
+
+
+                        ElseIf boardSquare(myX + tester3, myY) > 6 Then
+                            legalMoves(myX + tester3, myY) = True
+                            stop2 = True
+
+                        Else
+                            stop2 = True
+                        End If
+
+                    End If
+                Next
+
+
+
+
+                Dim tester4 As Integer
+                stop2 = False
+                For tester4 = 1 To (myX - 1)
+                    If stop2 = False Then
+
+
+                        If boardSquare(myX - tester4, myY) = 0 Then
+                            legalMoves(myX - tester4, myY) = True
+
+                        ElseIf boardSquare(myX - tester4, myY) > 6 Then
+                            legalMoves(myX - tester4, myY) = True
+                            stop2 = True
+                        Else
+                            stop2 = True
+                        End If
+
+                    End If
+                Next
+
+
             End If ' End of rook code
 
 
@@ -337,9 +381,4 @@
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        'white rooks
-        boardSquare(8, 3) = 7
-        boardSquare(8, 1) = 7
-    End Sub
 End Class
