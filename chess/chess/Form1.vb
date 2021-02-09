@@ -163,15 +163,23 @@
 
 
             '  --------------------------------------- The scary stuff goes somewhere in here
-            Dim clearerx As Integer
+            Dim clearerx As Integer ' sets every move in the array to false
             Dim clearery As Integer
             For clearerx = 1 To 8
                 For clearery = 1 To 8
                     legalMoves(clearerx, clearery) = False
                 Next
             Next
+            '------------------------------------------------------------------------------------------------------------------------  Hey! Here's a guide for adding rules.
+            ' Inputs: myX, myY
+            ' Output: Fill in the array of booleans legalMoves(myX,myY) = true for every legal move
+            ' It should have already cleared the array by now?
 
+            '              Below is an example of what not to do, you always want to check if a square is out of range before trying to read or set its value!!
 
+            '              If boardSquare(myX, myY + 1) = 0 Then
+            '              legalMoves(myX, myY + 1) = True      'move forward one
+            '          End If
 
             Dim myX As Integer = selections(1)
             Dim myY As Integer = selections(2)
@@ -179,7 +187,7 @@
             If boardSquare(myX, myY) = 0 Then
                 '                                   If selected square is empty, do nothing?
             ElseIf boardSquare(myX, myY) = 1 Then
-                ' white pawn code
+                ' ----------------------------------------------------------------------------------------------------------white pawn code
 
 
 
@@ -200,7 +208,9 @@
                 End If
 
 
-                'white rook code
+                '-----------------------------------------------------------------------------------------------------------white rook code
+
+                ' Maybe redo this? It's functional, but probably terrible.
 
 
 
@@ -210,7 +220,7 @@
                 '
                 Dim tester As Integer
                 Dim stop1 As Boolean = False
-                For tester = 1 To (8 - myY)
+                For tester = 1 To (8 - myY) ' what?
 
                     If stop1 = False Then
                         If boardSquare(myX, myY + tester) = 0 Then
@@ -305,8 +315,30 @@
                     End If
                 Next
 
+                ' End of rook code
 
-            End If ' End of rook code
+
+
+
+                '--------------------------------------------------------------------------------------------------------------------------------------------------------
+                '-------------------------------------------------------------------------------------------------------------------------------------------------------- 
+                '-------------------------------------------------------------------------------------------------------------------------------------------- KNIIIIGHTS!
+
+
+
+
+
+
+
+
+
+
+
+                '--------------------------------------------------------------------------------------------------------------------------------------------------------
+                '--------------------------------------------------------------------------------------------------------------------------------------------------------
+                '--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+            End If
 
 
 

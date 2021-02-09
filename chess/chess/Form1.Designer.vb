@@ -42,7 +42,7 @@ Partial Class ChessForm
         Me.Controls.Add(Me.Button1)
         Me.MaximumSize = New System.Drawing.Size(525, 550)
         Me.Name = "ChessForm"
-        Me.Text = " Chess?"
+        Me.Text = " "
         Me.ResumeLayout(False)
 
     End Sub
